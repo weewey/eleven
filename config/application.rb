@@ -16,6 +16,5 @@ module Eleven
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     # config.time_zone = 'Singapore'
-    config.active_record.raise_in_transactional_callbacks = true
   end
 end
