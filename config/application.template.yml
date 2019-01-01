@@ -1,0 +1,10 @@
+HOST: 'localhost'
+PORT: '4567'
+
+RAILS_MAX_THREADS: '3'
+
+DB_NAME: 'eleven_dev'
+DB_HOST: 'localhost'
+DB_PORT: '5001'
+DB_USER: 'postgres'
+DB_PASSWORD: ''
