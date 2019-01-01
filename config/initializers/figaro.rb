@@ -1,0 +1,12 @@
+Figaro.require_keys(
+  'HOST',
+  'PORT',
+  'RAILS_MAX_THREADS',
+  'DB_NAME',
+  'DB_HOST',
+  'DB_PORT',
+  'DB_USER',
+  'DB_PASSWORD',
+  'ELEVEN_EMAIL_USERNAME',
+  'ELEVEN_EMAIL_PASSWORD',
+)

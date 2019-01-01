@@ -8,3 +8,6 @@ DB_HOST: 'localhost'
 DB_PORT: '5001'
 DB_USER: 'postgres'
 DB_PASSWORD: ''
+
+ELEVEN_EMAIL_USERNAME: 'eleven.el.sg@gmail.com'
+ELEVEN_EMAIL_PASSWORD: ''

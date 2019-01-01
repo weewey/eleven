@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/ping', to: 'health_check#health_check'
+
+  devise_for :users
+  root 'home#index'
 end
