@@ -18,35 +18,24 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
 
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
-      else
-        format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    if @photo.save
+      redirect_to @photo, notice: 'Photo was successfully uploaded'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @photo }
-      else
-        format.html { render :edit }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    if @photo.update(photo_params)
+      redirect_to @photo, notice: 'Photo was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @photo.destroy
-    respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to photos_url, notice: 'Photo was successfully destroyed'
   end
 
   private
@@ -55,6 +44,6 @@ class PhotosController < ApplicationController
     end
 
     def photo_params
-      params.fetch(:photo, {})
+      params.require(:photo).permit(:race, :tags)
     end
 end

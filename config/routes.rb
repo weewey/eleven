@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :races
   resources :photos
   get '/ping', to: 'health_check#health_check'
 
