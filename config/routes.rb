@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  resources :races
-  resources :photos
+  resources :photographers
   get '/ping', to: 'health_check#health_check'
 
-  devise_for :users
   root 'home#index'
 end

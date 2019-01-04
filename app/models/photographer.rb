@@ -1,4 +1,3 @@
-class Photographer < User
-  has_many :photo
+class Photographer < ApplicationRecord
 
 end
