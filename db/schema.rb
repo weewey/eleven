@@ -10,9 +10,69 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_01_04_061010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "race_id"
+    t.bigint "photographer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photographer_id"], name: "index_assignments_on_photographer_id"
+    t.index ["race_id"], name: "index_assignments_on_race_id"
+  end
+
+  create_table "photographers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "tags", array: true
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "race_id"
+    t.index ["race_id"], name: "index_photos_on_race_id"
+  end
+
+  create_table "photos_runners", id: false, force: :cascade do |t|
+    t.bigint "runner_id", null: false
+    t.bigint "photo_id", null: false
+    t.index ["photo_id"], name: "index_photos_runners_on_photo_id"
+    t.index ["runner_id"], name: "index_photos_runners_on_runner_id"
+  end
+
+  create_table "race_participations", force: :cascade do |t|
+    t.string "bib_number"
+    t.bigint "race_id"
+    t.bigint "runner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["race_id"], name: "index_race_participations_on_race_id"
+    t.index ["runner_id"], name: "index_race_participations_on_runner_id"
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_date"
+    t.float "distance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "runners", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "photos", "races"
 end
