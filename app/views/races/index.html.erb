@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Races</h1>
+<% content_for :page_title, "Races" %>
 
 <table>
   <thead>
@@ -12,6 +10,7 @@
   <tbody>
     <% @races.each do |race| %>
       <tr>
+        <td><%= race.name %></td>
         <td><%= link_to 'Show', race %></td>
         <td><%= link_to 'Edit', edit_race_path(race) %></td>
         <td><%= link_to 'Destroy', race, method: :delete, data: { confirm: 'Are you sure?' } %></td>

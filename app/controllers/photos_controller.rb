@@ -22,6 +22,7 @@ class PhotosController < ApplicationController
   # POST /photos
   def create
     @photo = Photo.new(photo_params)
+    @photo.race = Race.find(photo_params[:race_id])
 
     if @photo.save
       redirect_to @photo, notice: 'Photo was successfully created.'
@@ -53,6 +54,6 @@ class PhotosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def photo_params
-      params.fetch(:photo, {})
+      params.require(:photo).permit(:image, :race_id)
     end
 end

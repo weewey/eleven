@@ -11,15 +11,33 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </head>
-<body>
-
+<body class="widescreen">
 <%= render 'layouts/topbar' %>
 
-<main role="main" class="container">
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
 
-  <%= yield %>
+      <% if content_for?(:page_title) %>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="page-title-box">
+              <h4 class="page-title"><%= yield(:page_title) %></h4>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
 
-</main>
+      <div id="error-container">
+        <%= render partial: "shared/messages" %>
+      </div>
+
+      <%= yield %>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>

@@ -1,5 +1,9 @@
-<h1>New Race</h1>
+<% content_for :page_title, 'New Race' %>
 
-<%= render 'form', race: @race %>
+<div class="row">
+  <div class="col-sm-12">
+    <%= render 'shared/errors', resource: @race %>
 
-<%= link_to 'Back', races_path %>
+    <%= render 'form', race: @race %>
+  </div>
+</div>

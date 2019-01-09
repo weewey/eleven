@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_01_04_061010) do
 
   create_table "photos", force: :cascade do |t|
     t.string "tags", array: true
-    t.string "image_url"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "race_id"

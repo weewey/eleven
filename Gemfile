@@ -23,6 +23,8 @@ gem 'turbolinks', '~> 5'
 
 gem 'figaro'
 gem 'devise'
+gem 'carrierwave', '~> 1.0'
+gem 'fog'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

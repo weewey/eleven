@@ -1,5 +1,9 @@
-<h1>New Photo</h1>
+<% content_for :page_title, "Upload Photos" %>
 
-<%= render 'form', photo: @photo %>
+<div class="row">
+  <div class="col-sm-12">
+    <%= render 'shared/errors', resource: @photo %>
 
-<%= link_to 'Back', photos_path %>
+    <%= render 'form', photo: @photo %>
+  </div>
+</div>
