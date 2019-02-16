@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  faker:
+    name:
+      email: [hello@eleven.sg, goodbye@eleven.sg, what@eleven.sg, testing@eleven.sg]

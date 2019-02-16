@@ -1,14 +1,19 @@
 <nav class="navbar navbar-light fixed-top">
-  <a class="navbar-brand" href="#">
-    <img src="/images/logo.png" width="50" height="50" alt="Eleven" style="margin-right: 1rem">
-    Eleven
+  <a class="navbar-brand" href="/">
+    <h1>El .</h1>
   </a>
-
-  <div>
-    <%= form_tag(races_path, method: 'get', class: 'navbar-form form-inline ') do %>
-      <%= search_field_tag :search, nil, class: 'form-control float-right mr-sm-2', placeholder: 'Search for races' %>
-      <%= submit_tag "Submit", class: 'btn btn-secondary btn-outline-dark btn-xs' %>
-    <% end %>
-  </div>
-
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <%= link_to 'Photos', photos_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Races', races_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Login', races_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Register', races_path, class: 'nav-link' %>
+    </li>
+  </ul>
 </nav>

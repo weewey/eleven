@@ -14,7 +14,7 @@ RSpec.describe Photographer, type: :model do
     context 'with invalid params' do
       it 'is invalid' do
         valid_attributes[:email] = nil
-        expect(Photographer.new(valid_attributes)).to be_valid
+        expect(Photographer.new(valid_attributes)).to be_invalid
       end
     end
 

@@ -23,6 +23,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.race = Race.find(photo_params[:race_id])
+    @photo.photographer = Photographer.find(photo_params[:photographer_id])
 
     if @photo.save
       redirect_to @photo, notice: 'Photo was successfully created.'
@@ -47,13 +48,12 @@ class PhotosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_photo
-      @photo = Photo.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def photo_params
-      params.require(:photo).permit(:image, :race_id)
-    end
+  def set_photo
+    @photo = Photo.find(params[:id])
+  end
+
+  def photo_params
+    params.require(:photo).permit(:image, :race_id, :photographer_id, tags: [])
+  end
 end

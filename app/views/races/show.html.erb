@@ -1,4 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% content_for :page_title, "Race" %>
 
-<%= link_to 'Edit', edit_race_path(@race) %> |
+<div><%= @race.name %> </div>
+<div><%= @race.distance %> KM</div>
+<div><%= @race.start_date %> </div>
+
+<div class="container-fluid">
+  <div class="col-12" style="text-align: center">
+    <% @race.photos.each do |photo| %>
+      <%= link_to photo do %>
+        <%= image_tag photo.image.url, class: "col-3" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%= link_to 'Edit', edit_race_path(@race) %>
 <%= link_to 'Back', races_path %>
