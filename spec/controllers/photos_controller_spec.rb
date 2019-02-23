@@ -24,7 +24,7 @@ RSpec.describe PhotosController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Photo" do
-        expect { post :create, params: { photo: valid_attributes } }.to change{Photo.count}.by(1)
+        expect { post :create, params: { photo: valid_attributes } }.to change { Photo.count }.by(1)
       end
 
       it "redirects to the created photo" do
