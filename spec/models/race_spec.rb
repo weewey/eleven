@@ -17,7 +17,7 @@ RSpec.describe Race, type: :model do
       let(:assignment) { create(:assignment) }
       let(:photo) { create(:photo, race: race) }
       let(:photographer) { create(:photographer, assignments: [assignment]) }
-      let(:runner) { create(:runner, ) }
+      let(:runner) { create(:runner,) }
       let(:race_participation) { create(:race_participation, race: race, runner: runner) }
 
       before do

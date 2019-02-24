@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_080129) do
+ActiveRecord::Schema.define(version: 2019_02_23_130731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(version: 2019_01_13_080129) do
     t.datetime "updated_at", null: false
     t.bigint "race_id"
     t.integer "photographer_id"
+    t.boolean "race_official", default: false, null: false
     t.index ["photographer_id"], name: "index_photos_on_photographer_id"
     t.index ["race_id"], name: "index_photos_on_race_id"
+    t.index ["race_official"], name: "index_photos_on_race_official"
   end
 
   create_table "photos_runners", id: false, force: :cascade do |t|

@@ -1,22 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe Photo, type: :model do
-  describe 'validation' do
-    let(:valid_attributes) { attributes_for(:photo) }
 
-    it 'is valid' do
-      photo = Photo.create(valid_attributes)
-      expect(photo).to be_valid
+  describe 'validation' do
+    subject { create(:photo) }
+
+    it 'is valid with valid attributes' do
+      expect(subject).to be_valid
     end
 
     it 'is valid with no runners' do
-      photo = Photo.create(valid_attributes.except(:runners))
-      expect(photo).to be_valid
+      subject.runners = []
+      expect(subject).to be_valid
     end
 
     it 'is valid with no photographers' do
-      photo = Photo.create(valid_attributes.except(:photographer_id))
-      expect(photo).to be_valid
+      subject.photographer_id = nil
+      expect(subject).to be_valid
+    end
+
+    it 'is invalid without race_official flag' do
+      subject.race_official = nil
+      expect(subject).to be_invalid
     end
   end
 

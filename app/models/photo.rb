@@ -5,4 +5,6 @@ class Photo < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  validates_inclusion_of :race_official, in: [true, false], :message => "value is required"
+
 end
