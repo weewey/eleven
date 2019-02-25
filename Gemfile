@@ -23,6 +23,7 @@ gem 'turbolinks', '~> 5'
 
 gem 'figaro'
 gem 'devise'
+gem 'closure-compiler'
 gem 'carrierwave', '~> 1.0'
 gem 'fog'
 gem 'font-awesome-rails'

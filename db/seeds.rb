@@ -3,12 +3,17 @@ require 'faker'
 Faker::Config.locale = 'en'
 I18n.reload!
 
-def seed_race
+def seed_race_with_official_photo
   puts __method__.to_s
-  today_8_am = DateTime.now.change({ hour: 8, min: 0, sec: 0 })
-  race_name = Faker::StrangerThings.quote
-  race_distance = Faker::Number.decimal(2)
-  Race.create(name: race_name, start_date: today_8_am, distance: race_distance)
+  race_official_photos_path = Rails.root.join('spec', 'fixtures', 'race_official_photos')
+  Dir.glob("#{race_official_photos_path }/*.png").each do |race_picture|
+    race_name = race_picture.split('/')[-1][0..-5]
+    today_8_am = DateTime.now.change({ hour: 8, min: 0, sec: 0 })
+    race_distance = 42.195
+    race = Race.create(name: race_name, start_date: today_8_am, distance: race_distance)
+    Photo.create(tags: [PhotoTags::OFFICE_RACE_PHOTO], image: Pathname.new(race_picture).open,
+                 race_id: race.id, race_official: true)
+  end
 end
 
 def seed_photographer
@@ -21,8 +26,6 @@ end
 
 def seed_race_photos(race, photographer, runner)
   puts __method__.to_s
-  Photo.create(tags: [PhotoTags::OFFICE_RACE_PHOTO], remote_image_url: (Faker::Avatar.image),
-               race_id: race.id, race_official: true)
   Photo.create(tags: [Faker::Dog.name, Faker::DragonBall.character], remote_image_url: (Faker::Avatar.image),
                race_id: race.id, photographer_id: photographer.id, runners: [runner],
                race_official: false)
@@ -50,13 +53,15 @@ def seed_assignment_with_race(race, photographer)
 end
 
 unless Race.all.count > 0
-  10.times do |time|
-    puts "seeding db #{time}"
-    race = seed_race
+  puts "seeding db"
+
+  seed_race_with_official_photo
+  Race.all.each do |race|
     photographer = seed_photographer
     runner = seed_runner
     seed_race_participation(race, runner)
     seed_race_photos(race, photographer, runner)
     seed_assignment_with_race(race, photographer)
   end
+
 end

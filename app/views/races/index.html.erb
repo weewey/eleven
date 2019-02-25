@@ -1,6 +1,6 @@
 <% content_for :page_title, "Races" %>
 
-<div class="col-12" style="text-align: center">
+<div class="container">
   <div class="row">
     <% @races.each do |race| %>
       <div class="col-4">
@@ -17,4 +17,4 @@
 
 <br>
 
-<%= link_to 'New Race', new_race_path %>
+<%= button_to 'New Race', new_race_path%>
