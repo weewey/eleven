@@ -15,6 +15,15 @@ module Eleven
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    # config.time_zone = 'Singapore'
+    config.time_zone = 'Singapore'
+
+    Dir["#{Rails.root}/app/clients/*"].each do |path|
+      config.autoload_paths << path
+    end
+
+    Dir["#{Rails.root}/app/services/*"].each do |path|
+      config.autoload_paths << path
+    end
+
   end
 end

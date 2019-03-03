@@ -1,0 +1,51 @@
+{
+  "responses": [
+    {
+      "fullTextAnnotation": {
+        "pages": [
+          {
+            "blocks": [
+              {
+                "paragraphs": [
+                  {
+                    "words": [
+                      {
+                        "symbols": [
+                          {
+                            "text": "A"
+                          }
+                        ],
+                        "confidence": 0.97
+                      },
+                      {
+                        "symbols": [
+                          {
+                            "text": "3"
+                          },
+                          {
+                            "text": "0"
+                          },
+                          {
+                            "text": "1"
+                          },
+                          {
+                            "text": "4"
+                          },
+                          {
+                            "text": "6"
+                          }
+                        ],
+                        "confidence": 0.92
+                      }
+                    ],
+                    "confidence": 0.93
+                  }
+                ],
+                "confidence": 0.93
+              }
+            ]
+          }
+        ]
+      }
+    }]
+}

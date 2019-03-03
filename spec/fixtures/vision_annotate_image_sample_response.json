@@ -1,0 +1,146 @@
+{
+  "responses": [
+    {
+      "fullTextAnnotation": {
+        "pages": [
+          {
+            "blocks": [
+              {
+                "paragraphs": [
+                  {
+                    "words": [
+                      {
+                        "symbols": [
+                          {
+                            "text": "C"
+                          },
+                          {
+                            "text": "h"
+                          },
+                          {
+                            "text": "a"
+                          },
+                          {
+                            "text": "r"
+                          },
+                          {
+                            "text": "t"
+                          },
+                          {
+                            "text": "e"
+                          },
+                          {
+                            "text": "r"
+                          },
+                          {
+                            "text": "e"
+                          },
+                          {
+                            "text": "d"
+                          }
+                        ],
+                        "confidence": 0.9
+                      },
+                      {
+                        "symbols": [
+                          {
+                            "text": "M"
+                          },
+                          {
+                            "text": "a"
+                          },
+                          {
+                            "text": "r"
+                          },
+                          {
+                            "text": "a"
+                          },
+                          {
+                            "text": "t"
+                          },
+                          {
+                            "text": "h"
+                          },
+                          {
+                            "text": "o"
+                          },
+                          {
+                            "text": "n"
+                          }
+                        ],
+                        "confidence": 0.93
+                      }
+                    ],
+                    "confidence": 0.91
+                  },
+                  {
+                    "words": [
+                      {
+                        "symbols": [
+                          {
+                            "text": "2"
+                          },
+                          {
+                            "text": "0"
+                          },
+                          {
+                            "text": "1"
+                          },
+                          {
+                            "text": "8"
+                          }
+                        ],
+                        "confidence": 0.99
+                      }
+                    ],
+                    "confidence": 0.99
+                  }
+                ],
+                "confidence": 0.93
+              },
+              {
+                "paragraphs": [
+                  {
+                    "words": [
+                      {
+                        "symbols": [
+                          {
+                            "text": "A"
+                          }
+                        ],
+                        "confidence": 0.96
+                      },
+                      {
+                        "symbols": [
+                          {
+                            "text": "3"
+                          },
+                          {
+                            "text": "0"
+                          },
+                          {
+                            "text": "1"
+                          },
+                          {
+                            "text": "3"
+                          },
+                          {
+                            "text": "0"
+                          }
+                        ],
+                        "confidence": 0.96
+                      }
+                    ],
+                    "confidence": 0.96
+                  }
+                ],
+                "blockType": "TEXT",
+                "confidence": 0.96
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

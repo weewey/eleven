@@ -28,6 +28,10 @@
 /config/master.key
 config/application.yml
 
+# Pictures directory
+/public/uploads
+
 # Idea project files
 /.idea
 .DS_Store
+*.iml

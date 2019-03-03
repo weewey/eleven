@@ -28,6 +28,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'fog'
 gem 'font-awesome-rails'
 gem 'simple_form'
+gem 'faraday'
+gem 'sidekiq'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

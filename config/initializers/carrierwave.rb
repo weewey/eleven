@@ -5,7 +5,7 @@ CarrierWave.configure do |config|
       google_storage_access_key_id: Figaro.env.GOOGLE_STORAGE_ACCESS_KEY_ID,
       google_storage_secret_access_key: Figaro.env.GOOGLE_STORAGE_SECRET_ACCESS_KEY
     }
-    config.fog_directory = 'photos'
+    config.fog_directory = 'eleven'
     config.fog_public = true
     config.storage = :fog
   else
