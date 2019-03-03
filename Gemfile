@@ -59,6 +59,7 @@ group :test do
   gem 'factory_bot'
   gem 'factory_bot_rails'
   gem 'webmock'
+  gem 'rspec-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

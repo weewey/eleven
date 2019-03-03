@@ -3,6 +3,8 @@ PORT: '4567'
 
 RAILS_MAX_THREADS: '3'
 
+SIDEKIQ_REDIS_URL: 'redis://localhost:6379/0'
+
 DB_NAME: 'eleven_dev'
 DB_HOST: 'localhost'
 DB_PORT: '5001'
