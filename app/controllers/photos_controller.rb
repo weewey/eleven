@@ -26,6 +26,7 @@ class PhotosController < ApplicationController
     @photo.photographer = Photographer.find(photo_params[:photographer_id])
 
     if @photo.save
+      TextExtractionWorker.perform_async(@photo.image.url)
       redirect_to @photo, notice: 'Photo was successfully created.'
     else
       render :new

@@ -22,6 +22,10 @@ RSpec.describe PhotosController, type: :controller do
   end
 
   describe "POST #create" do
+    before do
+      allow(TextExtractionWorker).to receive(:perform_async)
+    end
+
     context "with valid params" do
       it "creates a new Photo" do
         expect { post :create, params: { photo: valid_attributes } }.to change { Photo.count }.by(1)
@@ -30,6 +34,11 @@ RSpec.describe PhotosController, type: :controller do
       it "redirects to the created photo" do
         post :create, params: { photo: valid_attributes }
         expect(response).to redirect_to(Photo.last)
+      end
+
+      it 'calls TextExtractionWorker' do
+        expect(TextExtractionWorker).to receive(:perform_async)
+        post :create, params: { photo: valid_attributes }
       end
     end
   end

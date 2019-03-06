@@ -1,6 +1,8 @@
 class TextExtractionWorker
   include Sidekiq::Worker
 
+  sidekiq_options retry: 0, queue: ElevenConstants::SIDEKIQ_DEFAULT_QUEUE
+
   def perform(photo_id)
     photo = Photo.find(photo_id)
     response = TextExtractionService.execute(photo.image.url)
