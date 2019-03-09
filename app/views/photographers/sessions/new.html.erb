@@ -1,0 +1,26 @@
+<div class="container">
+  <h2 style="margin-bottom: 30px">Login</h2>
+
+  <%= simple_form_for resource, as: resource_name, url: session_path(resource_name),
+                      wrapper: :horizontal_form do |f| %>
+    <%= f.input :email, required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+    <%= f.input :password,
+                required: false,
+                input_html: { autocomplete: "current-password" } %>
+
+    <div class="form-group row mb-0">
+      <div class="col-sm-9 offset-sm-3">
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <%= f.button :submit, "Log in", class: 'btn-primary' %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div class="col-sm-9 offset-sm-3">
+    <%= render "photographers/shared/links" %>
+  </div>
+
+</div>
