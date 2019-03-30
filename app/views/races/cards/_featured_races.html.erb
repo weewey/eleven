@@ -1,0 +1,29 @@
+<section class="py-6">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-8">
+        <p class="subtitle text-primary">Featured Races</p>
+        <h2>Races all over the world</h2>
+      </div>
+      <div class="col-md-4 d-md-flex align-items-center justify-content-end">
+        <a href="category.html" class="text-muted text-sm">See all races
+          <i class="fas fa-angle-double-right ml-2">
+          </i>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <% featured_races.each_with_index do |race, index| %>
+        <div class="d-flex align-items-lg-stretch mb-4 <%= index == 0 ? 'col-lg-8' : 'col-lg-4' %>">
+          <div style="background: center center url(<%= race.photos.find_by(race_official: true).image.url %>) no-repeat; background-size: cover;" class="card shadow-lg border-0 w-100 border-0">
+            <%= link_to '', race_path(race), class: 'tile-link' %>
+            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
+              <h3 class="text-shadow text-uppercase mb-0 text-center"><%= race.name %></h3>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</section>

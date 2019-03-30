@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
-    @photos = Photo.all
+    @photos = Photo.where(race_official: false)
   end
 
   # GET /photos/1

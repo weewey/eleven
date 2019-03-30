@@ -1,13 +1,22 @@
-<nav class="navbar navbar-light fixed-top">
-  <a class="navbar-brand" href="/">
-    <h1>El .</h1>
-  </a>
-  <ul class="nav justify-content-end">
-    <li class="nav-item">
-      <%= link_to 'Photos', photos_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'Races', races_path, class: 'nav-link' %>
-    </li>
-  </ul>
+<nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center">
+      <%= link_to image_tag('logo.svg'), root_url, class:"navbar-brand py-1"  %>
+    </div>
+    <button type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right">
+      <i class="fa fa-bars"></i></button>
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "Races", races_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Photos", photos_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
+          <%= link_to 'Add a photo', new_photo_path, class: 'btn btn-primary' %>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

@@ -1,20 +1,26 @@
 <% content_for :page_title, "Races" %>
 
 <div class="container">
+
+  <div class="row mb-5">
+    <%= button_to 'New Race', new_race_path, class: "btn btn-primary", method: :get %>
+  </div>
+
   <div class="row">
     <% @races.each do |race| %>
-      <div class="col-4">
-        <%= link_to race do %>
-          <%= official_race_photo_img(race) %>
-        <% end %>
-        <div><%= race.name %></div>
-        <div><%= link_to 'Edit', edit_race_path(race) %></div>
-        <div><%= link_to 'Destroy', race, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+
+      <div class="col-sm-6 col-xl-4 mb-5">
+        <div class="card h-100 border-0 shadow">
+          <%= link_to race do %>
+            <div style="background-image: url(<%= race.photos.where(race_official: true).first.image.url %>); min-height: 300px;" class="card-img-top overflow-hidden bg-cover">
+              <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
+                <div class="badge badge-transparent badge-pill px-3 py-2">Race</div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
+
 </div>
-
-<br>
-
-<%= button_to 'New Race', new_race_path%>

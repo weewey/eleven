@@ -5,9 +5,18 @@ RSpec.describe PhotosController, type: :controller do
   let(:valid_attributes) { attributes_for(:photo) }
 
   describe "GET #index" do
+    let!(:photo_1) { create(:photo) }
+    let!(:photo_2) { create(:photo, :race_official) }
+
     it "returns a success response" do
       get :index, params: {}
       expect(response).to be_successful
+    end
+
+    it 'only fetches non race official photos' do
+      get :index, params: {}
+      photos = assigns(:photos)
+      expect(photos).to eq([photo_1])
     end
   end
 
@@ -23,6 +32,7 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "POST #create" do
     before do
+      sign_in(create(:user))
       allow(TextExtractionWorker).to receive(:perform_async)
     end
 

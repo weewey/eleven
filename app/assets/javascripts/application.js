@@ -10,6 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery.min.js
+//= require bootstrap.bundle.min.js
+//= require jquery.magnific-popup.min.js
+//= require smooth-scroll.polyfills.min.js
+//= require bootstrap-select.min.js
+//= require ofi.min.js
+//= require swiper.min.js
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

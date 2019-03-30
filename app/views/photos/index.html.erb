@@ -1,11 +1,37 @@
 <% content_for :page_title, "Photos" %>
 
-<div class="col-12" style="text-align: center">
-  <% @photos.each do |photo| %>
-    <%= link_to photo do %>
-      <%= image_tag photo.image.url, class: "col-3" %>
-    <% end %>
-  <% end %>
-</div>
+<div class="container">
 
-<%= link_to 'New Photo', new_photo_path %>
+  <div class="row mb-5">
+    <%= button_to 'New Photos', new_photo_path, class: "btn btn-primary", method: :get %>
+  </div>
+
+  <div class="row">
+    <% @photos.each do |photo| %>
+
+      <div class="col-sm-6 col-xl-4 mb-5">
+        <div class="card h-100 border-0 shadow">
+          <%= link_to photo do %>
+            <div style="background-image: url(<%= photo.image.url %>); min-height: 300px;" class="card-img-top overflow-hidden bg-cover">
+              <div class="card-img-overlay-top d-flex justify-content-between align-items-center">
+                <div class="badge badge-transparent badge-pill px-3 py-2">Photo</div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h6 class="card-title mb-3">
+                Race:<%= link_to photo.race.name_with_year, photo, class: "text-decoration-none text-dark ml-3" %>
+              </h6>
+              <div class="d-flex card-subtitle mb-3">
+                  <% photo.tags.each do |tag| %>
+                    <div class="badge badge-primary ml-2 px-3 py-2"><%= tag %></div>
+                  <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
