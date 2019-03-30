@@ -31,5 +31,7 @@ rspec:
   stage: test
   script:
     - cp -f config/application.template.yml config/application.yml
+    - gem install bundler
+    - bundle install
     - bundle exec rake db:drop:all db:create:all db:migrate
     - bundle exec rspec
