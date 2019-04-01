@@ -6,6 +6,7 @@ services:
 
 stages:
   - test
+  - deploy_integration
 
 variables:
   HOST: 'localhost'
@@ -33,5 +34,9 @@ rspec:
     - cp -f config/application.template.yml config/application.yml
     - gem install bundler
     - bundle install
+    - bundle config build.nokogiri --use-system-libraries
     - bundle exec rake db:drop:all db:create:all db:migrate
     - bundle exec rspec
+
+deploy_integration:
+  stage: deploy_integration
