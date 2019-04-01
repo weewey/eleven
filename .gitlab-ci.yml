@@ -33,7 +33,6 @@ rspec:
   script:
     - cp -f config/application.template.yml config/application.yml
     - gem install bundler
-    - apt-get install ruby-dev
     - bundle install
     - bundle config build.nokogiri --use-system-libraries
     - bundle exec rake db:drop:all db:create:all db:migrate
