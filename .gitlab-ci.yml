@@ -40,3 +40,5 @@ rspec:
 
 deploy_integration:
   stage: deploy_integration
+  script:
+    - echo "deploying integration"
