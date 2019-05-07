@@ -15,5 +15,10 @@ RSpec.describe HomeController, type: :controller do
       featured_races = assigns(:featured_races)
       expect(featured_races).to eq([race_2, race_1])
     end
+
+    it 'only features races with offical photo' do
+      get :index
+      featured_races = assigns(:featured_races)
+    end
   end
 end

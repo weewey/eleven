@@ -32,7 +32,7 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "POST #create" do
     before do
-      sign_in(create(:user))
+      sign_in(create(:photographer))
       allow(TextExtractionWorker).to receive(:perform_async)
     end
 
@@ -53,12 +53,55 @@ RSpec.describe PhotosController, type: :controller do
     end
   end
 
+  describe "GET #search" do
+    before do
+      @race = create(:race, name: 'Standard Charted Marathon')
+      @photo = create(:photo, tags: ['James'], race_id: @race.id)
+    end
+
+    context "when the search includes tags that already exist" do
+      before do
+        allow(Photo).to receive(:race_with_tag).and_return([@photo])
+      end
+
+      it "calls race_with_tag" do
+        expect(Photo).to receive(:race_with_tag).with(@race.id, 'James')
+        get :search, params: { tag: 'James', race_id: @race.id }
+      end
+
+      it 'adds the notice on PHOTOS FOUND' do
+        get :search, params: { tag: 'James', race_id: @race.id }
+        expect(flash[:notice]).to eq("Photos Found")
+      end
+    end
+
+    context "when the search includes tags that doesn't already exist" do
+      before do
+        allow(Photo).to receive(:race_with_tag).and_return([])
+      end
+
+      let(:non_existent_tags) { "abcdefg" }
+
+      it 'adds the notice on NO PHOTOS FOUND' do
+        get :search, params: { tag: non_existent_tags, race_id: @race.id }
+        expect(flash[:notice]).to eq("No Photos Found. Returning the latest 10 photos")
+        end
+
+      it 'returns the latest 10 photos' do
+        get :search, params: { tag: non_existent_tags, race_id: @race.id }
+        expect(assigns[:photos]).to eq(Photo.last(10))
+      end
+    end
+
+  end
+
   describe "PUT #update" do
     context "with valid params" do
       let(:photo_tags) { { tags: %w(Me You) } }
       let(:update_attributes) { valid_attributes.merge(photo_tags) }
 
       before do
+        sign_in(create(:photographer))
         @photo_1 = create(:photo)
       end
 
@@ -76,6 +119,11 @@ RSpec.describe PhotosController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+
+    before do
+      sign_in(create(:photographer))
+    end
+
     it "destroys the requested photo" do
       photo = Photo.create! valid_attributes
       expect {

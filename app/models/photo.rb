@@ -1,4 +1,6 @@
 class Photo < ApplicationRecord
+  include PhotoScopes
+
   belongs_to :race
   belongs_to :photographer, optional: true
   has_and_belongs_to_many :runners

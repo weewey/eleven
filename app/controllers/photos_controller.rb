@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :authenticate_photographer!, only: [:new, :create, :update, :destroy]
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy], except: [:search]
 
   # GET /photos
   def index
@@ -9,6 +9,18 @@ class PhotosController < ApplicationController
 
   # GET /photos/1
   def show
+  end
+
+  # GET /photos/search
+  def search
+    @photos = Photo.race_with_tag(params[:race_id].to_i, params[:tag])
+    @notice = 'Photos Found'
+    if @photos.empty?
+      @photos = Photo.last(10)
+      @notice = 'No Photos Found. Returning the latest 10 photos'
+    end
+    flash[:notice] = @notice
+    render :index, :photos => @photos
   end
 
   # GET /photos/new

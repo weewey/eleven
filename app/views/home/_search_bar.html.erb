@@ -1,15 +1,15 @@
 <div class="container">
   <div class="search-bar rounded p-2 p-lg-4 position-relative mt-n5 z-index-20">
-    <form action="#">
+    <form method="get" action="/photos/search?">
       <div class="row">
         <div class="col-lg-4 d-flex align-items-center form-group">
-          <input type="search" name="search" placeholder="What is your bib-no?" class="form-control border-0 shadow-0">
+          <input type="text" name="tag" placeholder="Enter your bib-no / name" class="form-control border-0 shadow-0">
         </div>
         <div class="col-md-6 col-lg-6 d-flex align-items-center form-group no-divider">
-          <select title="Races" data-style="btn-form-control" class="selectpicker col-12">
-            <% for race in featured_races %>
-              <option value=<% race.id %>><%= race.name_with_year %></option>
-            <% end %>
+          <% featured_races = featured_races.map { |race| [race.name_with_year, race.id] } %>
+
+          <select title="Races" name="race_id" data-style="btn-form-control" class="selectpicker col-12">
+            <%= options_for_select(featured_races) %>
           </select>
         </div>
         <div class="col-lg-2 form-group mb-0">

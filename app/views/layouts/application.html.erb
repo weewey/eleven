@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>Eleven</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
+  <%= controller_javascript_include_tag %>
   <%= csrf_meta_tags %>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
