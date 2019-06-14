@@ -61,11 +61,11 @@ RSpec.describe PhotosController, type: :controller do
 
     context "when the search includes tags that already exist" do
       before do
-        allow(Photo).to receive(:race_with_tag).and_return([@photo])
+        allow(Photo).to receive(:of_race_with_tags).and_return([@photo])
       end
 
       it "calls race_with_tag" do
-        expect(Photo).to receive(:race_with_tag).with(@race.id, 'James')
+        expect(Photo).to receive(:of_race_with_tags).with(@race.id, 'James')
         get :search, params: { tag: 'James', race_id: @race.id }
       end
 
@@ -77,7 +77,7 @@ RSpec.describe PhotosController, type: :controller do
 
     context "when the search includes tags that doesn't already exist" do
       before do
-        allow(Photo).to receive(:race_with_tag).and_return([])
+        allow(Photo).to receive(:of_race_with_tags).and_return([])
       end
 
       let(:non_existent_tags) { "abcdefg" }

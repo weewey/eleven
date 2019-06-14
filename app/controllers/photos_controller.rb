@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/search
   def search
-    @photos = Photo.race_with_tag(params[:race_id].to_i, params[:tag])
+    @photos = Photo.of_race_with_tags(params[:race_id].to_i, params[:tag])
     @notice = 'Photos Found'
     if @photos.empty?
       @photos = Photo.last(10)
