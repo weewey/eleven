@@ -32,6 +32,7 @@ rspec:
   stage: test
   script:
     - cp -f config/application.template.yml config/application.yml
+    - sudo apt-get install nodejs
     - gem install bundler
     - bundle install
     - bundle config build.nokogiri --use-system-libraries
