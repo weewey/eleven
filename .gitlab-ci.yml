@@ -6,11 +6,13 @@ services:
 
 stages:
   - test
+  - build
   - deploy_integration
 
 variables:
   HOST: 'localhost'
   PORT: '4567'
+  CONTAINER_IMAGE: weewey/eleven:${CI_COMMIT_SHORT_SHA}
   POSTGRES_DB: 'eleven_test'
   POSTGRES_HOST: 'postgres'
   POSTGRES_USER: 'runner'
@@ -37,6 +39,15 @@ rspec:
     - bundle config build.nokogiri --use-system-libraries
     - bundle exec rake db:drop:all db:create:all db:migrate
     - bundle exec rspec
+
+build:
+  stage: build
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker build -t ${CONTAINER_IMAGE} .
+    - docker tag ${CONTAINER_IMAGE} ${CONTAINER_IMAGE}
+    - docker tag ${CONTAINER_IMAGE} weewey/eleven:latest
+    - docker push ${CONTAINER_IMAGE}
 
 deploy_integration:
   stage: deploy_integration
