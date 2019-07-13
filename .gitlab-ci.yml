@@ -3,6 +3,7 @@ image: "ruby:2.5"
 services:
   - redis:latest
   - postgres:latest
+  - docker:dind
 
 stages:
   - test
@@ -41,7 +42,9 @@ rspec:
     - bundle exec rspec
 
 build:
-  image: docker:latest
+  image: docker:stable
+  tags:
+    - docker
   stage: build
   script:
     - docker login -username=$DOCKER_USER -password=DOCKER_PASSWORD
