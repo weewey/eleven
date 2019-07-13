@@ -44,7 +44,7 @@ build:
   image: docker:latest
   stage: build
   script:
-    - docker login -username="${DOCKER_USER}" -password="${DOCKER_PASSWORD}"
+    - docker login -username=$DOCKER_USER -password=DOCKER_PASSWORD
     - docker build -t ${CONTAINER_IMAGE} .
     - docker tag ${CONTAINER_IMAGE} ${CONTAINER_IMAGE}
     - docker tag ${CONTAINER_IMAGE} weewey/eleven:latest
