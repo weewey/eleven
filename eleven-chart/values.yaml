@@ -1,0 +1,16 @@
+app:
+  name: "eleven"
+
+replicaCount: 1
+
+image:
+  name: "eleven"
+  repository: "weewey/eleven"
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources: {}
