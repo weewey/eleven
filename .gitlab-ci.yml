@@ -58,7 +58,7 @@ build:
     - docker push "$CI_REGISTRY_IMAGE"
 
 deploy_integration:
-  image: devth/helm:stable
+  image: devth/helm
   stage: deploy_integration
   before_script:
     - mkdir -p /etc/deploy
