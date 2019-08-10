@@ -3,6 +3,9 @@ app:
 
 replicaCount: 1
 
+ingress:
+  enabled: false
+
 image:
   name: "eleven"
   repository: "weewey/eleven"
