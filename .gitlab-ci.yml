@@ -69,7 +69,7 @@ deploy_integration:
   script:
     - helm upgrade
       --install
-      --set image.tag="#{CI_COMMIT_SHORT_SHA}"
+      --set image.tag=${CI_COMMIT_SHORT_SHA}
       --wait
       eleven
       ./eleven-chart
