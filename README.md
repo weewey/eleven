@@ -15,6 +15,7 @@ brew install vips
 * Configuration
 
 * Database creation
+CREATE USER eleven_integration WITH PASSWORD ''
 
 * Database initialization
 
