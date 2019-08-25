@@ -67,11 +67,10 @@ deploy_integration:
     - gcloud container clusters get-credentials ${GKE_CLUSTER_NAME} --zone ${GKE_ZONE} --project ${GKE_PROJECT}
     - helm init --client-only
   script:
-    - helm upgrade
+    - helm upgrade eleven
       --install
       --set image.tag=${CI_COMMIT_SHORT_SHA}
       --wait
-      eleven
       ./eleven-chart
   only:
     refs:

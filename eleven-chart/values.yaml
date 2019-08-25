@@ -17,3 +17,6 @@ service:
   port: 80
 
 resources: {}
+
+config:
+  DB_PASSWORD: "r9aCRKAskZ2r"

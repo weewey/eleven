@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: eleven-configmap
+data:
+    PORT: '8080'
+    RAILS_MAX_THREADS: '3'
+    SIDEKIQ_REDIS_URL: 'redis://35.234.196.79:6379/0'
+    DB_NAME: 'eleven_integration'
+    DB_HOST: '35.240.255.33'
+    DB_PORT: '5432'
+    DB_USER: 'postgres'
+    DB_PASSWORD: {{.Values.config.DB_PASSWORD}}
+    ELEVEN_EMAIL_USERNAME: 'eleven.el.sg@gmail.com'
+    ELEVEN_EMAIL_PASSWORD: ''
+    GOOGLE_STORAGE_ACCESS_KEY_ID: ''
+    GOOGLE_STORAGE_SECRET_ACCESS_KEY: ''
+    GCP_CLOUD_VISION_API_KEY: ''
+    GCP_CLOUD_VISION_BASE_URL: ''
