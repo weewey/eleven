@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
     name: eleven-configmap
 data:
-    PORT: '8080'
+    PORT: '80'
     RAILS_MAX_THREADS: '3'
     SIDEKIQ_REDIS_URL: 'redis://35.234.196.79:6379/0'
     DB_NAME: 'eleven_integration'
