@@ -71,6 +71,7 @@ deploy_integration:
       --install
       --set image.tag=${CI_COMMIT_SHORT_SHA}
       --wait
+      --set config.db_password=${DB_PASSWORD}
       ./eleven-chart
   only:
     refs:
