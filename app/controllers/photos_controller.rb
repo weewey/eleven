@@ -36,7 +36,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.race = Race.find(photo_params[:race_id])
-    @photo.photographer = Photographer.find(photo_params[:photographer_id])
+    @photo.photographer = current_photographer
 
     if @photo.save
       TextExtractionWorker.perform_async(@photo.image.url)

@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_013841) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "race_id"
-    t.integer "photographer_id"
+    t.bigint "photographer_id"
     t.boolean "race_official", default: false, null: false
     t.index ["photographer_id"], name: "index_photos_on_photographer_id"
     t.index ["race_id"], name: "index_photos_on_race_id"

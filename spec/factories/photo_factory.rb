@@ -6,7 +6,6 @@ FactoryBot.define do
     tags { ["Wong Ken Mun", "A30130", "SCSM2018"] }
     race_official { false }
     race_id { create(:race).id }
-    photographer_id { create(:photographer).id }
 
     trait :race_official do
       race_official { true }

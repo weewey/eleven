@@ -32,7 +32,8 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "POST #create" do
     before do
-      sign_in(create(:photographer))
+      photographer = create(:photographer)
+      sign_in(photographer)
       allow(TextExtractionWorker).to receive(:perform_async)
     end
 
