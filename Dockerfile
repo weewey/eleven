@@ -13,6 +13,3 @@ RUN gem install bundler
 RUN bundle install
 
 COPY . .
-
-EXPOSE 4567
-CMD ["bundle", "exec", "rails", "s"]

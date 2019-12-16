@@ -5,12 +5,12 @@ metadata:
 data:
     PORT: '80'
     RAILS_MAX_THREADS: '3'
-    SIDEKIQ_REDIS_URL: 'redis://35.234.196.79:6379/0'
+    SIDEKIQ_REDIS_URL: 'redis://eleven-integration-sidekiq-redis-master.default.svc.cluster.local:6379/0'
     DB_NAME: 'eleven_integration'
-    DB_HOST: '35.240.255.33'
+    DB_HOST: 'eleven-integration-postgresql.default.svc.cluster.local'
     DB_PORT: '5432'
     DB_USER: 'postgres'
-    DB_PASSWORD: {{.Values.config.DB_PASSWORD}}
+    DB_PASSWORD: 'giWEoRW6wu'
     ELEVEN_EMAIL_USERNAME: 'eleven.el.sg@gmail.com'
     ELEVEN_EMAIL_PASSWORD: ''
     GOOGLE_STORAGE_ACCESS_KEY_ID: ''

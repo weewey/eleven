@@ -29,7 +29,7 @@ variables:
   APP_TYPE: "rails"
   GKE_CLUSTER_NAME: "eleven-integration"
   GKE_ZONE: "asia-southeast1-a"
-  GKE_PROJECT: "eleven-007"
+  GKE_PROJECT: "eleven"
 
 rspec:
   variables:

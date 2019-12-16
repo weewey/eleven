@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.app.name }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.app.name }}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+        release: {{ .Release.Name }}
+    spec:
+      restartPolicy: Never
+      containers:
+        - args:
+            - bundle
+            - exec
+            - rake
+            - db:create
+            - db:migrate
+          envFrom:
+            - configMapRef:
+                name: eleven-configmap
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag}}
+          name: eleven-migration-job
