@@ -1,36 +1,9 @@
 ---
 version: 2.1
-commands:
-  setup:
-    steps:
-      - checkout
-      - cache-restore:
-          name: Restore bundle cache
-          key: eleven-{{ checksum "Gemfile.lock" }}
-
-      - run: bundle install --path vendor/bundle
-
-      - cache-save:
-          name: Store bundle cache
-          key: eleven-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-            -
-      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: cp .sample.env .env
-      - run: gem update
-      - run: gem install bundler
-      - run: bundle install
-      - run: bundle exec rake db:setup db:migrate
-
-setup: &setup
-  working_directory: ~/eleven
-  steps:
-    - setup
 
 jobs:
   test:
-    <<: *setup
+    working_directory: ~/eleven
     docker:
       - image: circleci/ruby:2.5.5
         environment:
@@ -41,6 +14,22 @@ jobs:
           POSTGRES_DB: eleven-test
           POSTGRES_PASSWORD: ""
     steps:
+      - checkout
+      - restore_cache:
+          name: Restore bundle cache
+          key: eleven-{{ checksum "Gemfile.lock" }}
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          name: Store bundle cache
+          key: eleven-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: cp .sample.env .env
+      - run: gem update
+      - run: gem install bundler
+      - run: bundle install
+      - run: bundle exec rake db:setup db:migrate
       - run: bundle exec rake
 
 workflows:
