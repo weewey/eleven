@@ -1,4 +1,5 @@
-version: 2
+---
+version: 2.1
 jobs:
   build:
     working_directory: ~/your-app-name
@@ -6,11 +7,11 @@ jobs:
       - image: circleci/ruby:2.5.5
       environment:
         RAILS_ENV: test
-      - image: postgres:9.5
+      - image: postgres:10.1-alpine
       environment:
         POSTGRES_USER: eleven
         POSTGRES_DB: eleven-test
-        POSTGRES_PASSWORD: "password"
+        POSTGRES_PASSWORD: ""
   steps:
     - checkout
     - run: dockerize -wait tcp://localhost:5432 -timeout 1m
