@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/your-app-name
+    docker:
+      - image: circleci/ruby:2.5.5
+      environment:
+        RAILS_ENV: test
+      - image: postgres:9.5
+      environment:
+        POSTGRES_USER: eleven
+        POSTGRES_DB: eleven-test
+        POSTGRES_PASSWORD: "password"
+  steps:
+    - checkout
+    - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+    - run: cp .sample.env .env
+    - run: bundle exec rake db:setup db:migrate
+    - run: bundle exec rake
