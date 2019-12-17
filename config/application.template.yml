@@ -1,14 +1,13 @@
 HOST: 'localhost'
-PORT: '4567'
-
+PORT: '8080'
 RAILS_MAX_THREADS: '3'
 
 SIDEKIQ_REDIS_URL: 'redis://localhost:6379/0'
 
-DB_NAME: 'eleven_dev'
+DB_NAME: 'eleven'
 DB_HOST: 'localhost'
-DB_PORT: '5001'
-DB_USER: 'postgres'
+DB_PORT: '5432'
+DB_USER: 'eleven'
 DB_PASSWORD: ''
 
 ELEVEN_EMAIL_USERNAME: 'eleven.el.sg@gmail.com'
