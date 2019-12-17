@@ -15,6 +15,9 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
+      - run: cp .sample.env .env
+      - run: gem update
+      - run: gem install bundler
       - restore_cache:
           name: Restore bundle cache
           key: eleven-{{ checksum "Gemfile.lock" }}
@@ -25,10 +28,6 @@ jobs:
           paths:
             - vendor/bundle
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: cp .sample.env .env
-      - run: gem update
-      - run: gem install bundler
-      - run: bundle install
       - run: bundle exec rake db:setup db:migrate
       - run: bundle exec rake
 
