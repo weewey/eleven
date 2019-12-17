@@ -20,6 +20,7 @@ commands:
       - run: cp .sample.env .env
       - run: gem update
       - run: gem install bundler
+      - run: bundle install
       - run: bundle exec rake db:setup db:migrate
 
 setup: &setup
