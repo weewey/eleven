@@ -15,7 +15,7 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
-      - run: cp application.template.yml application.yml
+      - run: cp config/application.template.yml config/application.yml
       - run: gem update
       - run: gem install bundler
       - restore_cache:
