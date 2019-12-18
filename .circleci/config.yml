@@ -40,7 +40,7 @@ jobs:
       - heroku/install
       - heroku/deploy-via-git:
           only-branch: master
-      - heroku run rake db:migrate --$HEROKU_APP_NAME
+      - heroku run rake db:migrate --app $HEROKU_APP_NAME
 
 workflows:
   version: 2
