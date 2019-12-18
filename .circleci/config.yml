@@ -1,6 +1,9 @@
 ---
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@1.0.0
+
 jobs:
   test:
     working_directory: ~/eleven
@@ -30,9 +33,23 @@ jobs:
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run: bundle exec rake db:create db:migrate
       - run: bundle exec rake
+  deploy_staging:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          only-branch: master
+      - heroku run rake db:migrate --$HEROKU_APP_NAME
 
 workflows:
   version: 2
   eleven:
     jobs:
       - test
+      - deploy_staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
