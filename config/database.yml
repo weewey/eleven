@@ -8,7 +8,7 @@ development:
   username: <%= Figaro.env.db_user %>
   password: <%= Figaro.env.db_password %>
   port: <%= Figaro.env.db_port %>
-  database: eleven_dev
+  database: eleven-dev
 
 test: &test
   <<: *default
@@ -16,7 +16,7 @@ test: &test
   username: <%= Figaro.env.db_user %>
   password: <%= Figaro.env.db_password %>
   port: <%= Figaro.env.db_port %>
-  database: eleven_test
+  database: eleven-test
 
 production:
   <<: *default
