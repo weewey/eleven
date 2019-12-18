@@ -31,7 +31,7 @@ jobs:
           paths:
             - vendor/bundle
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: bundle exec rake db:create db:migrate
+      - run: bundle exec rails db:migrate
       - run: bundle exec rake
   deploy_staging:
     executor: heroku/default
@@ -49,7 +49,7 @@ workflows:
       - test
       - deploy_staging:
           requires:
-            - build
+            - test
           filters:
             branches:
               only: master
