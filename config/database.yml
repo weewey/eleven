@@ -1,23 +1,26 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= Figaro.env.db_host %>
-  username: <%= Figaro.env.db_user %>
-  password: <%= Figaro.env.db_password %>
 
 development:
   <<: *default
+  host: <%= Figaro.env.db_host %>
+  username: <%= Figaro.env.db_user %>
+  password: <%= Figaro.env.db_password %>
   port: <%= Figaro.env.db_port %>
   database: eleven_dev
 
 test: &test
   <<: *default
+  host: <%= Figaro.env.db_host %>
+  username: <%= Figaro.env.db_user %>
+  password: <%= Figaro.env.db_password %>
   port: <%= Figaro.env.db_port %>
   database: eleven_test
 
 production:
   <<: *default
-  database: <%= Figaro.env.db_name %>
+  url: <%= Figaro.env.database_url %>
 
 cucumber:
   <<: *test
