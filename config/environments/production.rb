@@ -100,6 +100,7 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true
   }
+  config.action_mailer.default_url_options = { host: "#{Figaro.env.host}", port: "#{Figaro.env.port}" }
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
