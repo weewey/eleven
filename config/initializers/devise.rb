@@ -6,5 +6,6 @@ Devise.setup do |config|
 
   config.timeout_in = 20.minutes if Rails.env.production?
   config.sign_out_via = :delete
+  config.mailer_sender = Figaro.env.eleven_email_username
 
 end
