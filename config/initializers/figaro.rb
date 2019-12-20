@@ -1,5 +1,6 @@
 Figaro.require_keys(
   'PORT',
+  'HOSTNAME',
   'RAILS_MAX_THREADS',
   'DB_NAME',
   'DB_HOST',

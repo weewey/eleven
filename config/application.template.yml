@@ -1,4 +1,4 @@
-HOST: 'localhost'
+HOSTNAME: 'localhost'
 PORT: '8080'
 RAILS_MAX_THREADS: '3'
 
