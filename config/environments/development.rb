@@ -64,7 +64,8 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.action_mailer.default_url_options = { host: "#{Figaro.env.host}", port: "#{Figaro.env.port}" }
+  config.action_controller.default_url_options = {host: "#{Figaro.env.hostname}"}
+  config.action_mailer.default_url_options = {host: "#{Figaro.env.hostname}"}
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
