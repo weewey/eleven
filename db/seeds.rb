@@ -24,6 +24,12 @@ def seed_photographer
   Photographer.create(first_name: first_name, last_name: last_name, email: email)
 end
 
+def seed_admin
+  admin = Photographer.new(first_name: 'admin', last_name: 'admin', email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+  admin.skip_confirmation!
+  admin.save!
+end
+
 def seed_race_photos(race, photographer, runner)
   puts __method__.to_s
   Photo.create(tags: [Faker::Artist.name], remote_image_url: (Faker::Avatar.image),
@@ -52,16 +58,18 @@ def seed_assignment_with_race(race, photographer)
                     photographer_id: photographer.id)
 end
 
-unless Race.all.count > 0
-  puts "seeding db"
+#unless Race.all.count > 0
+#  puts "seeding db"
+#
+#  seed_race_with_official_photo
+#  Race.all.each do |race|
+#    photographer = seed_photographer
+#    runner = seed_runner
+#    seed_race_participation(race, runner)
+#    seed_race_photos(race, photographer, runner)
+#    seed_assignment_with_race(race, photographer)
+#  end
+#
+#end
 
-  seed_race_with_official_photo
-  Race.all.each do |race|
-    photographer = seed_photographer
-    runner = seed_runner
-    seed_race_participation(race, runner)
-    seed_race_photos(race, photographer, runner)
-    seed_assignment_with_race(race, photographer)
-  end
-
-end
+seed_photographer

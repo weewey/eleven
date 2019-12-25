@@ -98,7 +98,7 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:photo_tags) { { tags: %w(Me You) } }
+      let(:photo_tags) { { tags: "Me,You" } }
       let(:update_attributes) { valid_attributes.merge(photo_tags) }
 
       before do
@@ -109,11 +109,11 @@ RSpec.describe PhotosController, type: :controller do
       it "updates the photo" do
         put :update, params: { id: @photo_1.to_param, photo: update_attributes }
         @photo_1.reload
-        expect(@photo_1.tags).to eq(photo_tags[:tags])
+        expect(@photo_1.tags).to include("Me", "You")
       end
 
       it "redirects to the photo" do
-        put :update, params: { id: @photo_1.to_param, photo: valid_attributes }
+        put :update, params: { id: @photo_1.to_param, photo: update_attributes }
         expect(response).to redirect_to(@photo_1)
       end
     end
