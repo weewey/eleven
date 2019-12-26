@@ -9,4 +9,7 @@ class Photo < ApplicationRecord
 
   validates_inclusion_of :race_official, in: [true, false], :message => "value is required"
 
+  def tags_comma_separated
+    tags.join(',')
+  end
 end

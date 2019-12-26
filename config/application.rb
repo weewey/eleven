@@ -28,6 +28,5 @@ module Eleven
     Dir["#{Rails.root}/app/models/*"].each do |path|
       config.autoload_paths << path
     end
-
   end
 end

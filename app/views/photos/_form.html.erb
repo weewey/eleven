@@ -1,9 +1,11 @@
+<% javascript_include_tag 'tags-form' %>
+
 <%= form_for @photo, class: 'form-horizontal' do |f| %>
 
   <div class="form-group row">
     <label for="race" class="col-3 col-form-label">Select Race</label>
     <div class="col-4 input-group">
-      <%= f.collection_select :race_id, Race.order(:name), :id, :name_with_year , include_blank: true %>
+      <%= f.collection_select :race_id, Race.order(:name), :id, :name_with_year, include_blank: true %>
     </div>
   </div>
 
@@ -13,6 +15,13 @@
       <%= f.file_field :image, class: 'form-control-file', id: 'photo-upload' %>
     </div>
     <small class="form-text text-muted">Supports png, jpg or jpeg only</small>
+  </div>
+
+  <div class="form-group row">
+    <label for="tags" class="col-3 col-form-label">Add tags</label>
+    <div class="col-4 input-group">
+      <%= f.text_field :tags_comma_separated, 'data-role' => 'tagsinput' %>
+    </div>
   </div>
 
   <div class="text-center">

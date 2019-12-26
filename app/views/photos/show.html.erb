@@ -3,14 +3,10 @@
 <div class="col-12">
   <%= image_tag @photo.image.url, class: "col-3" %>
   <div>Tags</div>
-  <div><%= @photo.tags %></div>
+  <% @photo.tags.each do |tag| %>
+    <div class="badge badge-primary ml-2 px-3 py-2"><%= tag %></div>
+  <% end %>
 </div>
-
-<%= simple_form_for @photo, method: "PATCH" do |f| %>
-  <%= f.input :tags %>
-  <%= f.association :race, label: 'Race' %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %>

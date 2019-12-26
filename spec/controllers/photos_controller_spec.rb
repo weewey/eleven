@@ -98,7 +98,7 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:photo_tags) { { tags: "Me,You" } }
+      let(:photo_tags) { { tags_comma_separated: "Me,You" } }
       let(:update_attributes) { valid_attributes.merge(photo_tags) }
 
       before do

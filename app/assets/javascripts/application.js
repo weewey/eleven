@@ -17,7 +17,7 @@
 //= require bootstrap-select.min.js
 //= require ofi.min.js
 //= require swiper.min.js
-
 //= require rails-ujs
 //= require activestorage
+//= require bootstrap-tagsinput
 //= require_tree .

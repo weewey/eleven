@@ -48,8 +48,9 @@ class PhotosController < ApplicationController
 
   # PATCH/PUT /photos/1
   def update
-    tags = photo_params['tags'].split(',').map(&:strip)
-    if @photo.update(photo_params.merge({'tags' => tags}))
+    tags = photo_params['tags_comma_separated'].split(',').map(&:strip)
+    update_params =  photo_params.to_hash.merge({'tags' => tags}).except("tags_comma_separated")
+    if @photo.update(update_params)
       redirect_to @photo, notice: 'Photo was successfully updated.'
     else
       render :edit
@@ -69,6 +70,6 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:image, :race_id, :photographer_id, :tags)
+    params.require(:photo).permit(:image, :race_id, :photographer_id, :tags, :tags_comma_separated)
   end
 end
