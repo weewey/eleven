@@ -13,4 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'javas
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w[ theme.js theme.css home.js bootstrap-tagsinput.js tags-form.js]
+Rails.application.config.assets.precompile += %w[ theme.js style.default.css home.js bootstrap-tagsinput.js tags-form.js]

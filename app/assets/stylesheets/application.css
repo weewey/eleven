@@ -13,8 +13,8 @@
  *= require nouislider.css
  *= require swiper.min.css
  *= require magnific-popup.css
+*= require style.default.css
  *= require font-awesome
-*= require bootstrap.min.css
  *= require_tree .
  *= require_self
  */
